@@ -1,32 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import "./App.css"
+import {Login} from "./components/Login";
+import {Create} from "./components/Create";
 
-
-function Form(){
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-
-  function handleNameChange(e){
-    setName(e.target.value)
-  }
-  function handlePhoneChange(e){
-    setPhone(e.target.value)
-  }
-  return <>
-    <div>
-      Name: <input type="text" placeholder="Put ur name here" onChange={handleNameChange} value={name} required/><br/><br/>
-      Phone: <input type="text" placeholder="Put ur number here" onChange={handlePhoneChange} value={phone} required/>
-    </div>
-    <div>
-      Your name is {name} and your phone is {phone}
-    </div>
-    
-  </>
-}
 function App() {
-
   return (
     <>
-      <Form/>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Create />} />
+            </Routes>
+        </BrowserRouter>
     </>
   )
 }
