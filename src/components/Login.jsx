@@ -2,6 +2,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 
 export function Login(){
@@ -27,10 +28,10 @@ export function Login(){
         const data = await response.json();
         if(data["access_token"]){
             localStorage.setItem("username", username);
-            alert("Logged in");
+            toast.success("Logged in");
             navigate("/dashboard");
         }else{
-            alert(data["detail"])
+            toast.error(data["detail"])
             return;
         }
     }

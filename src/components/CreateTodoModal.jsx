@@ -4,6 +4,7 @@ import { Button } from '@mui/material';
 import { TextField } from '@mui/material';
 import { useState } from 'react';
 import { resolvePath } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 export function CreateTodoModal({updateTodos}){
     const [isOpen, setIsOpen] = useState(false);
@@ -37,15 +38,18 @@ export function CreateTodoModal({updateTodos}){
             },
             body: JSON.stringify(body)
         });
-        
-        const data = await response.json();
+
         setIsOpen(false);
-        alert("Todo created");
+        toast.success("Todo created!");
+        setTitle("");
+        setDes("");
+        setDeadline("");
+        setPrio("");
         updateTodos();
     }
 
     return <div>
-        <Button onClick={() => setIsOpen(true)}> Create Task</Button>
+        <Button style={{margin:"20px"}} onClick={() => setIsOpen(true)} variant='outlined' color='success'> Create Task</Button>
         <Modal open={isOpen} onClose={() => setIsOpen(false)}>
             <Box sx={style}>
                 <div style={{backgroundColor: "white"}}>
@@ -54,7 +58,7 @@ export function CreateTodoModal({updateTodos}){
                         <TextField value={des} placeholder='Description' onChange={(e) => setDes(e.target.value)}/><br/><br/>
                         <TextField value={deadLine} placeholder='Deadline' onChange={(e) => setDeadline(e.target.value)}/><br/><br/>
                         <TextField value={priority} placeholder='Priority' onChange={(e) => setPrio(e.target.value)}/><br/><br/>
-                        <Button onClick={createTodoClick} variant='outlined'>Create</Button>
+                        <Button onClick={createTodoClick} variant='outlined' color='success'>Create</Button>
                 </div>
             </Box>
         </Modal>

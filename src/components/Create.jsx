@@ -2,6 +2,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 
 export function Create(){
@@ -17,7 +18,7 @@ export function Create(){
     async function handleCreateClick(){
         
         if(pass != cpass){
-            alert("Password not matching");
+            toast("Password not matching");
             return;
         }
 
@@ -39,7 +40,7 @@ export function Create(){
         });
 
         const data = await response.json();
-        alert(data.message);
+        toast(data.message);
         setName("");
         setUsername("");
         setEmail("");

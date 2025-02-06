@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import "./App.css"
 import {Home} from "./components/Home"
 import {Login} from "./components/Login";
 import {Create} from "./components/Create";
 import { Dashboard } from "./components/Dashboard";
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -17,6 +17,8 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
         </BrowserRouter>
+
+        <Toaster />
     </>
   )
 }
