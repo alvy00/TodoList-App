@@ -1,3 +1,4 @@
+import "./components.css"
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
@@ -18,7 +19,7 @@ export function Create(){
     async function handleCreateClick(){
         
         if(pass != cpass){
-            toast("Password not matching");
+            toast.error("Password not matching");
             return;
         }
 
@@ -52,23 +53,24 @@ export function Create(){
     }
 
     return <>
-        <div className='create'>
-            <div className='create-text'>
-                Create an account
-            </div><br/>
-            <div>
-                <TextField placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} /><br/><br/>
-                <TextField placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} /><br/><br/>
-                <TextField placeholder='Phone' value={phone} onChange={(e) => setPhone(e.target.value)} /><br/><br/>
-                <TextField placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} /><br/><br/>
-                <TextField type='password' placeholder='Password' value={pass} onChange={(e) => setPass(e.target.value)} /><br/><br/>
-                <TextField type='password' placeholder='Confirm Password' value={cpass} onChange={(e) => setCpass(e.target.value)} />
-            </div><br/>
-                <Button variant="outlined" size='medium' onClick={handleCreateClick}>Create Account</Button><br/>
-            <div>
-                Already have an account? <a href='/login'>Login</a>
-            </div>
-        
+        <div className="create">
+            <div className="create-container">
+                <div className="create-text">
+                    Create an account
+                </div><br/>
+                <div>
+                    <TextField placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} /><br/><br/>
+                    <TextField placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} /><br/><br/>
+                    <TextField placeholder='Phone' value={phone} onChange={(e) => setPhone(e.target.value)} /><br/><br/>
+                    <TextField placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} /><br/><br/>
+                    <TextField type='password' placeholder='Password' value={pass} onChange={(e) => setPass(e.target.value)} /><br/><br/>
+                    <TextField type='password' placeholder='Confirm Password' value={cpass} onChange={(e) => setCpass(e.target.value)} />
+                </div><br/>
+                    <Button variant="outlined" size='medium' color="success" onClick={handleCreateClick}>Create Account</Button><br/>
+                <div>
+                    Already have an account? <a href='/login'>Login</a>
+                </div>
+            </div>    
         
         </div>
         

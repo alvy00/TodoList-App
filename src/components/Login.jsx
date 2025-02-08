@@ -1,3 +1,4 @@
+import "./components.css"
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
@@ -38,17 +39,20 @@ export function Login(){
 
     return <>
         <div className='login'>
-            <div className='login-text'>
-                Login
-            </div><br/>
-            <div>
-                <TextField placeholder='Username' value={username} onChange={(e) => {setUsername(e.target.value)}}/><br/><br/>
-                <TextField type='password' placeholder='Password' value={pass} onChange={(e) => {setPass(e.target.value)}}/>
-            </div><br/>
-                <Button variant="outlined" size='medium' onClick={handleLogin}>Login</Button><br/>
-            <div>
-                Do not have an account? <a href='/signup'>Sign Up</a>
+            <div className="login-container">
+                <div className='login-text'>
+                        Login
+                </div><br/>
+                <div>
+                    <TextField placeholder='Username' value={username} onChange={(e) => {setUsername(e.target.value)}}/><br/><br/>
+                    <TextField type='password' placeholder='Password' value={pass} onChange={(e) => {setPass(e.target.value)}}/>
+                </div><br/>
+                    <Button variant="outlined" size='medium' onClick={handleLogin}>Login</Button><br/>
+                <div>
+                    Do not have an account? <a href='/signup'>Sign Up</a>
+                </div>
             </div>
+            
         </div>
         
         

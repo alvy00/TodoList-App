@@ -1,0 +1,43 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    
+}
+
+.home{
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding-top: 50px;
+    background-image: url(../src/assets/bg-pics/homepage2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+}
+
+.homeBox{
+    height: 50%;
+    border: 1px solid burlywood;
+    border-radius: 20px;
+    background-color: blanchedalmond;
+    box-shadow: 10px 10px 78px -20px rgba(128,61,77,1);
+    opacity: 90% ;
+    padding: 5%;
+}
+.homeBox h4{
+    /* font-family:'Times New Roman', Times, serif ; */
+    text-align: center;
+    color: rgb(186, 14, 14);
+}
+.homeButtons{
+    padding-top: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+
+}
+
