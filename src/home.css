@@ -11,7 +11,7 @@
     justify-content: center;
     height: 100vh;
     padding-top: 50px;
-    background-image: url(../src/assets/bg-pics/homepage2.jpg);
+    background-image: url(/public/homepage2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
