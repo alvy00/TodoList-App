@@ -59,9 +59,9 @@
     display: flex;
     border: solid 1px ;
     justify-items: center;
-    justify-content: center;
-    height: 100vh;
+    justify-content: flex-start;
     padding-top: 5%;
+    height: 100vh;
     background-image: url(/public/homepage2.jpg);
     background-repeat: no-repeat;
     background-size: cover;

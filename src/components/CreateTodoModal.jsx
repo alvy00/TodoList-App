@@ -79,7 +79,7 @@ export function CreateTodoModal({ updateTodos }) {
                     <h2>Add a To-Do</h2>
                     <TextField fullWidth label="Title" value={title} onChange={(e) => setTitle(e.target.value)} /><br /><br />
                     <TextField fullWidth label="Description" value={des} onChange={(e) => setDes(e.target.value)} /><br /><br />
-                    <TextField fullWidth label="" type="date" value={deadLine} onChange={(e) => setDeadline(e.target.value)} /><br /><br />
+                    <TextField fullWidth label="Deadline" type="date" value={deadLine} onChange={(e) => setDeadline(e.target.value)} focused /><br /><br />
                     <TextField fullWidth label="Priority (1-5)" type="number" value={priority} onChange={(e) => setPrio(e.target.value)} /><br /><br />
                     <Button fullWidth onClick={createTodoClick} variant='contained' color='primary'>Create</Button>
                 </Box>
