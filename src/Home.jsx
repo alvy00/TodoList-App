@@ -1,4 +1,5 @@
 import "./home.css";
+import Stopwatch from "./components/Stopwatch";
 import { Button } from "@mui/material";
 import {
     createTheme,
@@ -24,12 +25,11 @@ function Home(){
     return <>
         <div className="home">
             <div className="homeBox">
-                <Typography variant="h4">Your journey of a thousand todos <br/>
-                    starts here :3 </Typography>
+                <Stopwatch />
                 <div className="homeButtons">
-                    <Button onClick={loginClick} variant="outlined"> Login </Button>
+                    <Button onClick={loginClick} variant="outlined"> Log_in </Button>
                     <h2>or</h2>
-                    <Button onClick={signupClick} variant="outlined"> Sign Up </Button>
+                    <Button onClick={signupClick} variant="outlined"> Sign_Up </Button>
                 </div>
             </div>
         </div>

@@ -32,6 +32,7 @@ export function Create(){
             "profile_picture": ""
         };
 
+        // https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/register 
         const response = await fetch("http://3.109.211.104:8001/register", {
             method: "POST",
             headers: {
