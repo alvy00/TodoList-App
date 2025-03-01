@@ -42,7 +42,10 @@ export function CreateTodoModal({ updateTodos }) {
         };
 
         try {
-            const response = await fetch("http://3.109.211.104:8001/todo", {
+
+            // https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/todo
+            // http://3.109.211.104:8001/todo
+            const response = await fetch("https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/todo", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
@@ -62,6 +65,8 @@ export function CreateTodoModal({ updateTodos }) {
         } catch (error) {
             toast.error("Error creating todo!");
         }
+
+        console.log(deadLine);
     }
 
     return (

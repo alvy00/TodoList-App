@@ -50,9 +50,7 @@ export default function Stopwatch(){
                 <div className="stpButtons">
 
                     {!startPressed ? <Button variant="contained" color="success" onClick={() => StartPress()}>Start</Button> 
-                        : <Button variant="contained" color="error" onClick={() => StopPress()}>Stop</Button>} 
-                
-                    {/* <Button onClick={() => Reset()}>Reset</Button> */}
+                        : <Button variant="contained" color="error" onClick={() => StopPress()}>Stop</Button>}
                 </div>
                 
             </div>

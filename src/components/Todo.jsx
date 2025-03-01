@@ -6,7 +6,10 @@ import EventAvailableSharpIcon from '@mui/icons-material/EventAvailableSharp';
 export function Todo({id, title, des, deadline, priority, is_completed, updateTodos }){
 
     async function deleteClick(){
-        const response = await fetch(`http://3.109.211.104:8001/todo/${id}`, {
+
+        // https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/todo/${id}
+        // http://3.109.211.104:8001/todo/${id}
+        const response = await fetch(`https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/todo/${id}`, {
             method: "DELETE"
         });
         const data = await response.json();
@@ -26,8 +29,6 @@ export function Todo({id, title, des, deadline, priority, is_completed, updateTo
             is_completed: true 
         };
     
-        console.log("Sending update request with body:", JSON.stringify(body, null, 2));
-    
         try {
 
             // https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/todo/${id} 
@@ -42,17 +43,10 @@ export function Todo({id, title, des, deadline, priority, is_completed, updateTo
             const data = await response.json();
             console.log("API Response:", data);
     
-            if (!response.ok) {
-                console.error("Update failed:", JSON.stringify(data, null, 2));
-                toast("Failed: " + (data.detail ? data.detail.map(d => d.msg).join(", ") : "Unknown error"));
-                return;
-            }
-    
             toast.success(data.message || "Task updated successfully!");
             updateTodos();
         } catch (error) {
             console.error("Network error:", error);
-            toast("Network error while updating task.");
         }
     };
     
