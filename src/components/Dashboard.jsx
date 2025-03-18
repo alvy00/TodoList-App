@@ -20,13 +20,15 @@ export function Dashboard(){
         const response = await fetch("https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/todos")
         const data = await response.json();
         setTodoList(data);
-        console.log(data);
     }
 
     function logoutClick(){
         localStorage.removeItem("username");
         toast.success("Logged out successful!");
         navigate("/");
+    }
+    function profileClick(){
+        navigate("/profile");
     }
 
     useEffect(() => {
@@ -41,7 +43,11 @@ export function Dashboard(){
 
             <div className="navBar">
                 <h1> Helloooo {userName}! </h1>
-                <div><Button onClick={logoutClick} variant="outlined" size="medium" color="error">Logout</Button></div>
+                <div className="dboardbtns">
+                    <div><Button onClick={profileClick} variant="outlined" size="medium">Profile</Button></div>
+                    <div><Button onClick={logoutClick} variant="outlined" size="medium" color="error">Logout</Button></div>
+                </div>
+                
             </div>
             <div className="searchBar">
                 <TextField placeholder="Search" fullWidth value={search} onChange={(e) => setSearch(e.target.value)}/>
@@ -64,7 +70,20 @@ export function Dashboard(){
                         }
                     )}
                 </div>
-                
+                <Todo 
+                    id={1} 
+                    title={"Test todo 1 "} 
+                    des={"fdjgsj"} 
+                    deadline={"2026-07-14T09:27:35Z"}
+                    priority={5}
+                    is_completed={false}
+                    />
+                <Todo id={2} 
+                    title={"Test todo 2 "} 
+                    des={"fdjgsj"} 
+                    deadline={"2025-07-14T09:27:35Z"}
+                    priority={5}
+                    is_completed={false}/>
             </div>
             <div>
                 <CreateTodoModal updateTodos={getTodos}/>
