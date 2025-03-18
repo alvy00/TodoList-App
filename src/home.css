@@ -18,7 +18,8 @@
 }
 
 .homeBox{
-    width: 50%;
+    width: 40%;
+    min-width: 400px;
     height: 50vh;
     margin: 20px auto;
     padding: 20px;

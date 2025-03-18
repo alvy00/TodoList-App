@@ -12,6 +12,7 @@
 .create-container{
     box-shadow: 10px 10px 78px -5px rgba(219,191,31,0.69);
     width: 30%;
+    min-width: 400px;
     height: 75vh;
     margin: 20px auto;
     padding: 20px;
@@ -48,6 +49,7 @@
 .login-container{
     box-shadow: 10px 10px 78px -5px rgba(219,191,31,0.69);
     width: 30%;
+    min-width: 400px;
     height: 50vh;
     margin: 20px auto;
     padding: 20px;
