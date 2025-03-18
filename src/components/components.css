@@ -10,20 +10,24 @@
     background-position: center;
 }
 .create-container{
-    padding: 3%;
+    box-shadow: 10px 10px 78px -5px rgba(219,191,31,0.69);
+    width: 30%;
+    height: 75vh;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid rgb(195, 196, 145);
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(50, 117, 23, 0.1);
+    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-items: center;
     justify-content: center;
     align-items: center;
-    border: 1px solid rgb(177, 180, 10);
-    border-radius: 20px;
-    background-color: bisque;
-    /* box-shadow: 10px 10px 78px -5px rgba(219,191,31,0.69); */
-    box-shadow: 10px 10px 78px -20px rgba(49,158,98,1);
+    backdrop-filter: blur(80px);
+    -webkit-backdrop-filter: blur(20px);
 }
 .create-text{
-    color: rgb(173, 11, 130);
+    color: rgb(244, 231, 240);
     font-family: 'Times New Roman', Times, serif;
 }
 .login{
@@ -38,20 +42,25 @@
     background-position: center;
 }
 .login-text{
-    color: rgb(173, 11, 130);
+    color: rgb(249, 247, 248);
     font-family: 'Times New Roman', Times, serif;
 }
 .login-container{
-    padding: 3%;
+    box-shadow: 10px 10px 78px -5px rgba(219,191,31,0.69);
+    width: 30%;
+    height: 50vh;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid rgb(195, 196, 145);
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(50, 117, 23, 0.1);
+    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-items: center;
     justify-content: center;
     align-items: center;
-    border: 1px solid rgb(177, 180, 10);
-    border-radius: 20px;
-    background-color: bisque;
-    box-shadow: 10px 10px 78px -5px rgba(219,191,31,0.69);
+    backdrop-filter: blur(80px);
+    -webkit-backdrop-filter: blur(20px);
 }
 .dashboard{
     padding: 0px;
@@ -241,7 +250,7 @@
 }
 .stp h1{
     font-size: 3rem;
-    color: rgb(153,111,84);
+    color: rgb(233, 102, 20);
     padding-bottom: 5%;
 }
 .timestring{

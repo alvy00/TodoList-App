@@ -68,7 +68,7 @@ export function Create(){
                     <TextField type='password' placeholder='Password' value={pass} onChange={(e) => setPass(e.target.value)} /><br/><br/>
                     <TextField type='password' placeholder='Confirm Password' value={cpass} onChange={(e) => setCpass(e.target.value)} />
                 </div><br/>
-                    <Button variant="outlined" size='medium' color="success" onClick={handleCreateClick}>Create Account</Button><br/>
+                    <Button variant="contained" size='medium' color="success" onClick={handleCreateClick}>Create Account</Button><br/>
                 <div>
                     Already have an account? <a href='/login'>Login</a>
                 </div>

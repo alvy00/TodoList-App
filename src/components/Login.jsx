@@ -50,7 +50,7 @@ export function Login(){
                     <TextField placeholder='Username' value={username} onChange={(e) => {setUsername(e.target.value)}}/><br/><br/>
                     <TextField type='password' placeholder='Password' value={pass} onChange={(e) => {setPass(e.target.value)}}/>
                 </div><br/>
-                    <Button variant="outlined" size='medium' onClick={handleLogin}>Login</Button><br/>
+                    <Button variant="contained" size='medium' onClick={handleLogin}>Login</Button><br/>
                 <div>
                     Do not have an account? <a href='/signup'>Sign Up</a>
                 </div>

@@ -45,7 +45,7 @@ export default function Stopwatch(){
 
     return <>
             <div className="stp">
-                <h1>StopWatch</h1>
+                <h1>StopWatch</h1><br/>
                 <div className="timestring">{TimeString()}</div>
                 <div className="stpButtons">
 
