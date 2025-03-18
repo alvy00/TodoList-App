@@ -53,6 +53,9 @@ export function Create(){
 
         navigate("/login");
     }
+    function loginClick(){
+        navigate("/login");
+    }
 
     return <>
         <div className="create">
@@ -69,8 +72,8 @@ export function Create(){
                     <TextField type='password' placeholder='Confirm Password' value={cpass} onChange={(e) => setCpass(e.target.value)} />
                 </div><br/>
                     <Button variant="contained" size='medium' color="success" onClick={handleCreateClick}>Create Account</Button><br/>
-                <div>
-                    Already have an account? <a href='/login'>Login</a>
+                <div style={{color:"white", fontWeight:300}}>
+                    Already have an account? <Button onClick={loginClick} variant="outlined" size='small'> Log in </Button>
                 </div>
             </div>    
         

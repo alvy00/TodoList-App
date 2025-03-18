@@ -39,6 +39,9 @@ export function Login(){
             return;
         }
     }
+    function signupClick(){
+        navigate("/signup");
+    }
 
     return <>
         <div className='login'>
@@ -51,8 +54,8 @@ export function Login(){
                     <TextField type='password' placeholder='Password' value={pass} onChange={(e) => {setPass(e.target.value)}}/>
                 </div><br/>
                     <Button variant="contained" size='medium' onClick={handleLogin}>Login</Button><br/>
-                <div>
-                    Do not have an account? <a href='/signup'>Sign Up</a>
+                <div style={{color:"white", fontWeight:300} }>
+                    Do not have an account? <Button onClick={signupClick} variant="outlined" size='small'> Sign up </Button>
                 </div>
             </div>
             
