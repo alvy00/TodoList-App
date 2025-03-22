@@ -78,7 +78,7 @@ export function CreateTodoModal({ updateTodos }) {
             </Button>
             <Modal open={isOpen} onClose={() => setIsOpen(false)}>
                 <Box sx={style}>
-                    <h2>Add a To-Do</h2>
+                    <h2>Add a To-Do</h2><br/>
                     <TextField fullWidth label="Title" value={title} onChange={(e) => setTitle(e.target.value)} /><br /><br />
                     <TextField fullWidth label="Description" value={des} onChange={(e) => setDes(e.target.value)} /><br /><br />
                     <TextField fullWidth label="Deadline" type="date" value={deadLine} onChange={(e) => setDeadline(e.target.value)} focused /><br /><br />

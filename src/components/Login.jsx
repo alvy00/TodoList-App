@@ -1,66 +1,104 @@
-import "./components.css"
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
+import "./components.css";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
+export function Login() {
+  const navigate = useNavigate();
 
-export function Login(){
-    const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
 
-    const [username, setUsername] = useState("");
-    const [pass, setPass] = useState("");
+  const validateInputs = () => {
+    const newErrors = {};
 
-    async function handleLogin(){
-        
-        const body = {
-            "username": username,
-            "password": pass
-        };
+    if (!username.trim()) newErrors.username = "Username is required";
+    if (!password) newErrors.password = "Password is required";
 
-        // https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/login 
-        // http://3.109.211.104:8001/login
-        const response = await fetch("https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/login", {
-            method: "POST",
-            headers: {
-                "Content-Type" : "application/json"
-            },
-            body: JSON.stringify(body)
-        });
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
-        const data = await response.json();
-        if(data["access_token"]){
-            localStorage.setItem("username", username);
-            toast.success("Logged in");
-            navigate("/dashboard");
-        }else{
-            toast.error(data["detail"])
-            return;
+  const handleLogin = async () => {
+    if (!validateInputs()) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+
+    const body = { username, password };
+
+    try {
+      const response = await fetch(
+        "https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
         }
-    }
-    function signupClick(){
-        navigate("/signup");
-    }
+      );
 
-    return <>
-        <div className='login'>
-            <div className="login-container">
-                <div className='login-text'>
-                        Login
-                </div><br/>
-                <div>
-                    <TextField placeholder='Username' value={username} onChange={(e) => {setUsername(e.target.value)}}/><br/><br/>
-                    <TextField type='password' placeholder='Password' value={pass} onChange={(e) => {setPass(e.target.value)}}/>
-                </div><br/>
-                    <Button variant="contained" size='medium' onClick={handleLogin}>Login</Button><br/>
-                <div style={{color:"white", fontWeight:300} }>
-                    Do not have an account? <Button onClick={signupClick} variant="outlined" size='small'> Sign up </Button>
-                </div>
-            </div>
-            
+      const data = await response.json();
+
+      if (data.access_token) {
+        localStorage.setItem("username", username);
+        toast.success("Logged in");
+        navigate("/dashboard");
+      } else {
+        toast.error(data.detail || "Login failed");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      toast.error("Something went wrong");
+    }
+  };
+
+  return (
+    <div className="login">
+      <div className="login-container">
+        <div className="login-text">Login</div>
+        <br />
+
+        <TextField
+          fullWidth
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          error={!!errors.username}
+          helperText={errors.username}
+        />
+        <br /><br />
+
+        <TextField
+          fullWidth
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          error={!!errors.password}
+          helperText={errors.password}
+        />
+        <br /><br />
+
+        <Button fullWidth variant="contained" onClick={handleLogin}>
+          Login
+        </Button>
+        <br /><br />
+
+        <div style={{ color: "white", fontWeight: 300 }}>
+          Don’t have an account?
+          <Button
+            onClick={() => navigate("/signup")}
+            variant="outlined"
+            size="small"
+            sx={{ ml: 1 }}
+          >
+            Sign Up
+          </Button>
         </div>
-        
-        
-    </>
+      </div>
+    </div>
+  );
 }

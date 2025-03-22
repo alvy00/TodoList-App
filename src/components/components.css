@@ -13,7 +13,7 @@
     box-shadow: 10px 10px 78px -5px rgba(219,191,31,0.69);
     width: 30%;
     min-width: 400px;
-    height: 75vh;
+    height: 80vh;
     margin: 20px auto;
     padding: 20px;
     border: 1px solid rgb(195, 196, 145);
@@ -78,12 +78,22 @@
     background-size: cover;
     background-position: center;
 }
-.dboardbtns{
+.navBar{
     display: flex;
-    flex-direction: row;
-    gap: 4%;
-    width: clamp(50px, 50%, 250); /* Min 150px, max 500px, scales dynamically */
-    height: clamp(10px, 20vh, 40px);
+    justify-content: space-between;
+}
+.dboardbtns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 2%; /* Adjust gap for better responsiveness */
+    width: clamp(50px, 50%, 300px); /* Min 200px, max 400px, scales dynamically */
+    height: auto;
+}
+
+.dboardbtns div {
+    flex: 1 45% 45%; /* Makes each button container flexible */
+    min-width: 100px; /* Minimum width for buttons */
 }
 .profile{
     padding: 0px;
@@ -136,17 +146,19 @@
 }
 .profileBtns {
     display: flex;
-    gap: 5%;
+    flex-direction: row;
+    gap: 10px; /* better than 5% for consistency */
+    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .profileBtns button {
     font-size: 0.7rem;
-    padding: 8px 16px;
+    padding: 6px 16px;
     min-width: 120px;
     flex: 1;
-    max-width: 200px; 
+    max-width: 200px;
 }
 .navBar h1{
     font-family: 'Times New Roman', Times, serif;

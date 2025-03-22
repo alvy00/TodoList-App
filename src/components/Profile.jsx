@@ -5,6 +5,7 @@ import "./components.css"
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import UpdateProfileModal from "./UpdateProfileModal"
 
 export default function Profile(){
     //const [profile, setProfile] = useState(null);
@@ -25,15 +26,22 @@ export default function Profile(){
 
     useEffect(() => {
         async function fetchProfile() {
+            const username = localStorage.getItem("username");
+            if (!username) {
+                toast.error("Username not found in localStorage");
+                return;
+            }
+
             try {
                 // http://3.109.211.104:8001/profile/${username}
                 // https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/profile/${username}
                 const res = await fetch(`https://5nvfy5p7we.execute-api.ap-south-1.amazonaws.com/dev/profile/${username}`);
                 const data = await res.json();
                 setProfile(data);
-
+                
             } catch (err) {
                 toast.error("Failed to load profile");
+                console.log({username});
             }
         }
 
@@ -62,7 +70,7 @@ export default function Profile(){
                     </div>
                 </div><br/>
                 <div className="profileBtns">
-                    <Button variant="contained" size="small" color="success">Update Profile</Button>
+                    <UpdateProfileModal currentProfile={profile} refreshProfile={() => window.location.reload()} setProfile={setProfile}/>
                     <Button onClick={dashboardBtn} variant="contained" size="small">Back to Dashboard</Button>
                 </div>
             </div>
