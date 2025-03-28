@@ -5,6 +5,8 @@ import { Todo } from "./Todo"
 import { CreateTodoModal } from "./CreateTodoModal"
 import { Button, TextField } from "@mui/material"
 import toast from "react-hot-toast"
+import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
+
 
 export function Dashboard(){
     const navigate = useNavigate();
@@ -12,6 +14,19 @@ export function Dashboard(){
     const [todoList, setTodoList] = useState([]);
     //const [filteredList, setFilteredList] = useState([]);
     const [search, setSearch] = useState("");
+    const [sortBy, setSortBy] = useState("None");
+
+
+
+
+    const totalTasks = (!todoList.length ? 4 : todoList.length);
+    const completedTasks = (!todoList.length ? 3 : todoList.filter(todo => todo.is_completed).length);
+    const efficiency = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+    const pieData = [
+        { name: "Completed", value: completedTasks },
+        { name: "Incomplete", value: totalTasks - completedTasks }
+    ];
+    const COLORS = ["#4caf50", "#f44336"];
 
     async function getTodos(){
 
@@ -42,7 +57,7 @@ export function Dashboard(){
         <div className="dashboard">
 
             <div className="navBar">
-                <h1> Helloooo {userName}! </h1>
+                <h1> Hellooo {userName}! </h1>
                 <div className="dboardbtns">
                     <div><Button onClick={profileClick} variant="outlined" size="medium">Profile</Button></div>
                     <div><Button onClick={logoutClick} variant="outlined" size="medium" color="error">Logout</Button></div>
@@ -50,9 +65,48 @@ export function Dashboard(){
                 
             </div>
             <div className="searchBar">
+                            <TextField
+                    select
+                    label="Sort By"
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                    SelectProps={{ native: true }}
+                    variant="outlined"
+                >
+                    <option value="None">None</option>
+                    <option value="CreationNew">Creation Time (Newest First)</option>
+                    <option value="CreationOld">Creation Time (Oldest First)</option>
+                    <option value="Deadline">Deadline (Soonest First)</option>
+                    <option value="Priority">Priority (Highest First)</option>
+                </TextField>
                 <TextField placeholder="Search" fullWidth value={search} onChange={(e) => setSearch(e.target.value)}/>
             </div>
 
+            <div className="pieChart">
+                <h2>📊 Task Statistics</h2>
+                <p>Total Tasks: <strong>{totalTasks}</strong></p>
+                <p>Completed Tasks: <strong>{completedTasks}</strong></p>
+                <p>Efficiency: <strong>{efficiency}%</strong></p>
+
+                <PieChart width={430} height={250}>
+                    <Pie
+                        data={pieData}
+                        cx="50%"
+                        cy="50%"
+                        labelLine={false}
+                        label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                        outerRadius={80}
+                        fill="#8884d8"
+                        dataKey="value"
+                    >
+                        {pieData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        ))}
+                    </Pie>
+                    <Tooltip />
+                    <Legend />
+                </PieChart>
+            </div>
 
             <div className="todoList">
                 <div>
