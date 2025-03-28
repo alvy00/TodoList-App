@@ -59,7 +59,7 @@ export function UpdateTodoModal({ open, handleClose, currentTodo, onUpdate }) {
   return (
     <Modal open={open} onClose={handleClose}>
       <Box sx={style}>
-        <h2>Update Todo</h2>
+        <h2>Update Todo</h2><br/>
         <TextField
           fullWidth
           label="Title"
